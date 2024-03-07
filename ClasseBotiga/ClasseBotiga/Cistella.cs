@@ -15,8 +15,6 @@ namespace ClasseBotiga
         private int nElements;
         private double diners;
 
-        // Propietats
-
         // Constructors
         public Cistella()
         {
@@ -37,6 +35,8 @@ namespace ClasseBotiga
         }
 
         // Propietats
+
+        // Inserir productes
         public Producte Productes
         {
             get { return Productes; }
@@ -50,6 +50,10 @@ namespace ClasseBotiga
         {
             get { return diners; }
             set { diners += value; }
+        }
+        public DateTime Data
+        {
+            get { return data; }
         }
 
         // Metodos
