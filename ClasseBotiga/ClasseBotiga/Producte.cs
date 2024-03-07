@@ -31,6 +31,14 @@ namespace ClasseBotiga
             this.quantitat = q;
         }
 
+        public Producte(Producte Botiga, int quantitat)
+        {
+            nom = Botiga.nom;
+            preu_sense_iva = Botiga.preu_sense_iva;
+            iva = Botiga.iva;
+            this.quantitat = quantitat;
+        }
+
         //Propietats
         public string Nom
         {
