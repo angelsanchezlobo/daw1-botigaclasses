@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClasseBotiga
 {
-    internal class Producte
+    public class Producte
     {
         //Atributs
         private string nom;
@@ -30,7 +30,6 @@ namespace ClasseBotiga
             this.iva = iva;
             this.quantitat = q;
         }
-
         public Producte(Producte Botiga, int quantitat)
         {
             nom = Botiga.nom;
@@ -176,6 +175,11 @@ namespace ClasseBotiga
             return $"Nom del producte: {nom} \n" +
                    $"Preu del producte: {Preu()} \n" +
                    $"Quantitat: {quantitat}";
+        }
+        static void BorrarConsola()
+        {
+            Console.Clear();
+            return;
         }
     }
 }
