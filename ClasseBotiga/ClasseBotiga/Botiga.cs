@@ -48,7 +48,7 @@ namespace ClasseBotiga
         public object[] Productes
         {
             get { return productes; }
-            set { productes = value; }
+            set { productes = value; } //Entiendo yo que hay que mirar de como meter el Objeto dentro del array
         }
         public int NElem
         {
@@ -81,6 +81,11 @@ namespace ClasseBotiga
         }
 
         //Mètodes
+        static void BorrarConsola()
+        {
+            Console.Clear();
+            return;
+        }
         public int EspaiLliure()
         {
             int espai = 0;
@@ -101,7 +106,7 @@ namespace ClasseBotiga
                 if (n == productes[i].Nom)
                     posicio = i;
             }
-
+            return posicio;
         }
     }
 }
