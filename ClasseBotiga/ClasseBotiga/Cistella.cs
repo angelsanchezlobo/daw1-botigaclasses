@@ -70,15 +70,23 @@ namespace ClasseBotiga
         }
 
         // Métodos
+        /// <summary>
+        /// Afegeix al array de productes un producte en base al objecte producte que se l'hi passa
+        /// </summary>
+        /// <param name="producte"> És el objecte producte que s'ha de afegir al array de productes de la cistella</param>
         public void ComprarProducte(Producte producte)
         {
             if (nElements >= productes.Length)
             {
+                string resposta;
                 Console.WriteLine("No hi ha espai, vols afegir?");
-                string resposta = Console.ReadLine();
+                resposta = Console.ReadLine();
                 if (resposta == "si" || resposta == "Si")
                 {
-                    Array.Resize(ref productes, productes.Length + 1);
+                    Producte[] aux = new Producte[productes.Length + 1];
+                    for (int i = 0; i < productes.Length; i++)
+                        aux[i] = productes[i];
+                    productes = aux;
                 }
             }
             else if (diners - CostTotal() > 0)
@@ -101,7 +109,9 @@ namespace ClasseBotiga
                 nElements++;
             }
         }
-
+        /// <summary>
+        /// Ordena el array de productes per nom amb bubble sort
+        /// </summary>
         public void OrdenarCistella()
         {
             for (int i = 0; i < nElements - 1; i++)
@@ -117,7 +127,9 @@ namespace ClasseBotiga
                 }
             }
         }
-
+        /// <summary>
+        /// Imprimeix el array de productes de manera amigable, mostrant preu unitari, amb impost...
+        /// </summary>
         public void Mostrar()
         {
             for (int i = 0; i < NElements; i++)
@@ -131,7 +143,10 @@ namespace ClasseBotiga
             }
             Console.WriteLine($"TOTAL: {CostTotal()}");
         }
-
+        /// <summary>
+        /// Calcula el preu de tot el que hi ha a la cistella amb iva inclós
+        /// </summary>
+        /// <returns> Total es el total de diners que costa la cistella </returns>
         public double CostTotal()
         {
             double total = 0;
@@ -142,7 +157,9 @@ namespace ClasseBotiga
             }
             return total;
         }
-
+        /// <summary>
+        /// Retorna el nom del producte y el total de tot amb IVA inclós
+        /// </summary>
         public override string ToString()
         {
             string result = "";

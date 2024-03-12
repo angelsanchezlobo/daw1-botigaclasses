@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClasseBotiga
 {
-    internal class Botiga
+    public class Botiga
     {
         //Atributs
         private string nomBotiga;
-        private object[] productes;
+        private Producte[] productes;
         private int nElem;
 
         //Constructors
@@ -25,11 +25,11 @@ namespace ClasseBotiga
             object[] productes = new object[nombreDeProductes];
             nElem = 0;
         }
-        public Botiga(string nom, object[] productesA)
+        public Botiga(string nom, object[] productesA) 
         {
             this.nomBotiga = nom;
             object[] productes = new object[productesA.Length];
-            for (int i = 0; i < productesA.Length; i++)
+            for(int i = 0; i < productesA.Length; i++)
             {
                 if (productesA[i] != null)
                 {
@@ -45,10 +45,10 @@ namespace ClasseBotiga
             get { return nomBotiga; }
             set { nomBotiga = NomValid(value); }
         }
-        public object[] Productes
+        public Producte Productes
         {
-            get { return productes; }
-            set { productes = value; }
+            get { return productes[nElem]; }
+            set { productes[nElem] = value; nElem++; } 
         }
         public int NElem
         {
@@ -81,12 +81,32 @@ namespace ClasseBotiga
         }
 
         //Mètodes
+        static void BorrarConsola()
+        {
+            Console.Clear();
+            return;
+        }
         public int EspaiLliure()
         {
-            for (int i = 0; i < productes.Length; i++)
+            int espai = 0;
+            for(int i = 0; i < productes.Length; i++)
             {
-
+                if (productes[i] == null)
+                {
+                    espai = i;
+                }
             }
+            return espai;
+        }
+        public int Indexador(string n)
+        {
+            int posicio = 0;
+            for(int i = 0; i < productes.Length;i++)
+            {
+                if (n == productes[i].Nom)
+                    posicio = i;
+            }
+            return posicio;
         }
     }
 }
