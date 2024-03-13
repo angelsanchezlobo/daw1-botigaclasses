@@ -19,8 +19,8 @@ namespace ClasseBotiga
         public Cistella()
         {
             botiga = null;
-            data = "";
-            productes = 10;
+            data = DateTime.Today;
+            Producte[] productes = new Producte[10];
             nElements = 0;
             diners = 0;
         }
