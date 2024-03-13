@@ -162,13 +162,13 @@ namespace ClasseBotiga
         /// </summary>
         public override string ToString()
         {
-            string result = "";
+            string mostrar = "";
             for (int i = 0; i < NElements; i++)
             {
-                result += $"Producte: {productes[i].Nom}\n";
+                mostrar += $"Producte: {productes[i].Nom}\n";
             }
-            result += $"TOTAL: {CostTotal()}";
-            return result;
+            mostrar += $"TOTAL: {CostTotal()}";
+            return mostrar;
         }
     }
 }
