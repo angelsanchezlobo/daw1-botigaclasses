@@ -18,7 +18,7 @@ namespace ClasseBotiga
         //Constructors
         public Botiga()
         {
-            object[] productes = new object[10];
+            Producte[] productes = new Producte[10];
             nElem = 0;
         }
         public Botiga(string nom, int nombreDeProductes)
@@ -27,10 +27,10 @@ namespace ClasseBotiga
             object[] productes = new object[nombreDeProductes];
             nElem = 0;
         }
-        public Botiga(string nom, object[] productesA)
+        public Botiga(string nom, Producte[] productesA)
         {
             this.nomBotiga = nom;
-            object[] productes = new object[productesA.Length];
+            Producte[] productes = new Producte[productesA.Length];
             for (int i = 0; i < productesA.Length; i++)
             {
                 if (productesA[i] != null)
@@ -47,10 +47,10 @@ namespace ClasseBotiga
             get { return nomBotiga; }
             set { nomBotiga = NomValid(value); }
         }
-        public object[] Productes
+        public Producte Productes
         {
-            get { return productes; }
-            set { productes = value; } //Entiendo yo que hay que mirar de como meter el Objeto dentro del array
+            get { return productes[nElem]; }
+            set { productes[nElem] = value; nElem++; }
         }
         public int NElem
         {
@@ -227,7 +227,45 @@ namespace ClasseBotiga
             }
             OrdenarProducte();
         }
+        public void Mostrar()
+        {
+            Console.WriteLine($"Productes de la botiga {nomBotiga}:");
+            Console.WriteLine("--------------------------------------------------");
+
+            for (int i = 0; i < productes.Length; i++)
+            {
+                if (productes[i] != null)
+                {
+                    Console.WriteLine($"Nom: {productes[i].Nom}");
+                    Console.WriteLine($"Preu: {productes[i].Preu_sense_iva} €");
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("--------------------------------------------------");
+        }
+        public override string ToString()
+        {
+            string res = $"Productes de la botiga {nomBotiga}:";
+            res += "\n--------------------------------------------------";
+            for (int i = 0; i < productes.Length; i++)
+            {
+                if (productes[i] != null)
+                {
+                    res += $"Nom: {productes[i].Nom}";
+                    res += $"Preu: {productes[i].Preu_sense_iva} €";
+                    res += $"Iva: {productes[i].Iva} €";
+                    res += $"Total: {productes[i].Preu} €";
+                    res += "";
+                }
+            }
+            res += "--------------------------------------------------";
+            return res;
+        }
 
     }
+
 }
+
+
+
 

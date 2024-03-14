@@ -170,7 +170,7 @@ namespace ClasseBotiga
             double ivaCalculat = preu_sense_iva / iva;
             return preu_sense_iva + ivaCalculat;
         }
-        public string ToString()
+        public override string ToString()
         {
             return $"Nom del producte: {nom} \n" +
                    $"Preu del producte: {Preu()} \n" +
