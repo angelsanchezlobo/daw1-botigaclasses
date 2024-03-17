@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace ClasseBotiga
 {
@@ -21,8 +22,9 @@ namespace ClasseBotiga
             diners = 0;
         }
 
-        public Cistella(Producte[] productes, int quantitat)
+        public Cistella(Producte[] productes, Botiga botiga)
         {
+            this.botiga = botiga;
             if (diners - CostTotal() < 0)
             {
                 Console.WriteLine("No hi ha prous diners");
@@ -162,13 +164,13 @@ namespace ClasseBotiga
         /// </summary>
         public override string ToString()
         {
-            string mostrar = "";
+            string result = "";
             for (int i = 0; i < NElements; i++)
             {
-                mostrar += $"Producte: {productes[i].Nom}\n";
+                result += $"Producte: {productes[i].Nom}\n";
             }
-            mostrar += $"TOTAL: {CostTotal()}";
-            return mostrar;
+            result += $"Total: {CostTotal()}";
+            return result;
         }
     }
 }
