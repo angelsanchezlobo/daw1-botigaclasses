@@ -99,8 +99,8 @@ namespace ClasseBotiga
                                             break;
                                         case 4:// Modificar Preu
                                             Console.WriteLine("Indica el nom de la botiga per a modificar el preu d'un producte: ");
-                                            nomBotiga = Convert.ToString(Console.ReadLine()) ;
-                                            i = TrobarBotiga(botiguesA , nElemB, nomBotiga);
+                                            nomBotiga = Convert.ToString(Console.ReadLine());
+                                            i = TrobarBotiga(botiguesA, nElemB, nomBotiga);
                                             Console.WriteLine("Quin producte vols modificar?");
                                             nomProducte = Convert.ToString(Console.ReadLine());
                                             Console.WriteLine("Quin es el preu que vols posar?");
@@ -121,9 +121,9 @@ namespace ClasseBotiga
                                             nomProducte = Convert.ToString(Console.ReadLine());
                                             Console.WriteLine("Quina quantitat vols posar?");
                                             int quantitatNova = Convert.ToInt32(Console.ReadLine());
-                                            if (botiguesA[i].ModificarProducte(botiguesA[i].Productes, nomProducte, preu, quantitatNova)) 
+                                            if (botiguesA[i].ModificarProducte(botiguesA[i].Productes, nomProducte, preu, quantitatNova))
                                                 Console.WriteLine("Producte modificat.");
-                                            else Console.WriteLine("No s'ha pogut modificar."); 
+                                            else Console.WriteLine("No s'ha pogut modificar.");
                                             break;
                                         case 6: //Ordenar Botiga String
                                             Console.WriteLine("Quina botiga vols ordenar");
@@ -213,16 +213,26 @@ namespace ClasseBotiga
                             switch (opcio4)
                             {
                                 case 1:
-                                    // Comprar Producte
+                                    Console.WriteLine("Quin producte vols afegir");
+                                    string producte = Console.ReadLine();
+                                    int posP = -1;
+                                    for (int i = 0; i < productesA.Length || posP == -1; i++)
+                                    {
+                                        if (producte == productesA[i].Nom)
+                                        {
+                                            posP = i;
+                                        }
+                                    }
+                                    cistellaProd[nElemC].ComprarProducte(productesA[posP]);
                                     break;
                                 case 2:
-                                    // Cost Total
+                                    Console.WriteLine($"El cost total es de {cistellaProd[nElemC].CostTotal()}");
                                     break;
                                 case 3:
-                                    // Ordenar Cistella
+                                    cistellaProd[nElemC].OrdenarCistella();
                                     break;
                                 case 4:
-                                    // Mostrar
+                                    cistellaProd[nElemC].Mostrar();
                                     break;
                                 case 0:
                                     // Sortir
@@ -268,9 +278,9 @@ namespace ClasseBotiga
         {
             bool trobat = false;
             int posicio = 0;
-            for(int i = 0; i < nElemB && !trobat; i++)
+            for (int i = 0; i < nElemB && !trobat; i++)
             {
-                if(nomB == botigues[i].NomBotiga)
+                if (nomB == botigues[i].NomBotiga)
                 {
                     posicio = i;
                     trobat = true;
@@ -309,7 +319,7 @@ namespace ClasseBotiga
         static int ContarArray(Botiga botiga)
         {
             int total = 0;
-            for(int i = 0; i < botiga.NElem;  i++)
+            for (int i = 0; i < botiga.NElem; i++)
             {
                 total = i;
             }
